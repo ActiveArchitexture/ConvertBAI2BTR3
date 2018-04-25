@@ -1,0 +1,19 @@
+{
+  "name": "convertbai2btr3",
+  "version": "0.0.1",
+  "description": "Convert BAI2 and BTR3 format files",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "BAI2",
+    "BTR3",
+    "JSON"
+  ],
+  "author": "Ross Kendle",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "bai-btrs-active-parsers": "0.0.1"
+  }
+}
