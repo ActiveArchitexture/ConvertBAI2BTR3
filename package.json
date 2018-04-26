@@ -14,6 +14,7 @@
   "author": "Ross Kendle",
   "license": "Apache-2.0",
   "dependencies": {
-    "bai-btrs-active-parsers": "0.0.1"
+    "bai-btrs-active-parsers": "0.0.1",
+    "request": "^2.85.0"
   }
 }

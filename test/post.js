@@ -1,21 +1,36 @@
 
 var request = require('request');
-
+var fs = require('fs');
 
 
 const options = {
-    hostname: 'us-central1-bai-btrs-active-parsers.cloudfunctions.net',
-    port: 443,
-    path: '/ConvertBAI2BTR3',
-    method: 'PUT',
+    uri: 'https://us-central1-bai-btrs-active-parsers.cloudfunctions.net/ConvertBAI2BTR3',
+    method: 'POST',
     headers: {
-        'Content-Type': 'application/json'
-    }
+        'Content-Type': 'text/plain',
+        'Accept': 'application/json'
+    },
+    body: fs.createReadStream('/Users/Ross/Workspaces/ConvertBAI2BTR3/test/emptyfile.txt')
 };
 
-fs.createReadStream('file.json').pipe(request.put('http://mysite.com/obj.json'))
 
-request('http://google.com/doodle.png').pipe(fs.createWriteStream('doodle.png'))
+//   request.post(options)
+//   .on('error', function(err) {
+//     console.log(err)
+//   })
+//   .on('response', function(response) {
+//     console.log(response.statusCode)
+//     console.log(response.headers)
+    
+//   })
+//   .on('body', function(body) {
+//     console.log(body)    
+//   })
 
-request.get('http://google.com/img.png').pipe(request.put('http://mysite.com/img.png'))
+  request(options, function (error, response, body) {
+  console.log('error:', error); // Print the error if one occurred
+  console.log(response.statusCode);
+  console.log(response.headers);
+  console.log(body); // Print the HTML for the Google homepage.
+});
 

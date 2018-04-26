@@ -7,7 +7,6 @@ function handleGET(req, res) {
 }
 
 function handlePOST(req, res) {
-    let input;
 
     switch (req.get('content-type')) {
         case 'text/plain':
@@ -17,11 +16,29 @@ function handlePOST(req, res) {
                     // convert input body to json and send
                     res.status(200).send(req.body);
                     break;
-        
+
                 case 'text/pdf':
                     res.status(403).send('pdf conversion not supported in this version');
                     break;
-        
+
+                default:
+                    res.status(403).send('only supports ACCEPT: application/json');
+                    break;
+            }
+            break;
+
+        case 'application/json':
+
+            switch (req.get('accept')) {
+                case 'application/json':
+                    // convert input body to json and send
+                    res.status(200).send(req.body);
+                    break;
+
+                case 'text/pdf':
+                    res.status(403).send('pdf conversion not supported in this version');
+                    break;
+
                 default:
                     res.status(403).send('only supports ACCEPT: application/json');
                     break;
